@@ -1,15 +1,31 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html>
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="refresh" content="0; url=https://weixin.qq.com/sph/Atxvo09Yd">
-    <title>正在跳转...</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>跳转到视频号</title>
     <script>
-        // JavaScript备用跳转方法
-        window.location.href = "https://weixin.qq.com/sph/Atxvo09Yd";
+        // 判断是否在微信浏览器内
+        function isWeixinBrowser() {
+            return /MicroMessenger/i.test(navigator.userAgent);
+        }
+
+        // 尝试跳转
+        function tryRedirect() {
+            if (isWeixinBrowser()) {
+                // 微信环境下，尝试直接跳转（可能被拦截）
+                window.location.href = "https://weixin.qq.com/sph/Atxvo09Yd";
+            } else {
+                // 非微信环境，直接跳转
+                window.location.replace("https://weixin.qq.com/sph/Atxvo09Yd");
+            }
+        }
+
+        // 页面加载后立即跳转
+        window.onload = tryRedirect;
     </script>
 </head>
 <body>
-    <p>如果页面没有自动跳转，请<a href="https://weixin.qq.com/sph/Atxvo09Yd">点击这里</a>。</p>
+    <p>如果跳转失败，请<a href="https://weixin.qq.com/sph/Atxvo09Yd">点击这里手动跳转</a>。</p>
 </body>
 </html>
